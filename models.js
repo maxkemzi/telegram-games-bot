@@ -2,10 +2,12 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const userSchema = new Schema({
-	_id: {
-		type: Number
+	telegramId: {
+		type: Number,
+		unique: true,
+		required: true
 	},
-	username: {
+	name: {
 		type: String
 	},
 	victories: {
@@ -22,7 +24,7 @@ const userSchema = new Schema({
 	},
 	ranking: {
 		type: Number,
-		default: 0,
+		default: 0
 	},
 	lastBonusTime: {
 		type: Number,

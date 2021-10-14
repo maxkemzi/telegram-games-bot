@@ -1,10 +1,25 @@
 {
-   "extends": ["eslint:recommended"],
    "parserOptions": {
-      "ecmaVersion": "latest"
+      "sourceType": "script",
+      "ecmaVersion": 2021
    },
+
    "env": {
       "es6": true,
       "node": true
+   },
+
+   "extends": [
+      "eslint:recommended",
+      "google"
+   ],
+
+   "rules": {
+      "semi": "off",
+      "require-jsdoc": "off",
+      "indent": ["error", "tab"],
+      "no-tabs": "off",
+      "comma-dangle": ["error", "never"],
+      "max-len": "off"
    }
 }

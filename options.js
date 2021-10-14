@@ -48,6 +48,6 @@ module.exports = {
 			inline_keyboard: [
 				[{text: 'Метнуть ещё раз', callback_data: 'dartsAgain'}]
 			]
-		}),
+		})
 	}
 }

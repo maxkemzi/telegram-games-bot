@@ -1,4 +1,4 @@
-const generateUsername = (username, firstName, lastName) => {
+const generateName = (username, firstName, lastName) => {
 	if (!username) {
 		if (lastName) {
 			return firstName + ' ' + lastName
@@ -10,7 +10,7 @@ const generateUsername = (username, firstName, lastName) => {
 	return username
 }
 
-const delay = ms => {
+const delay = (ms) => {
 	return new Promise((resolve) => {
 		setTimeout(() => {
 			resolve()
@@ -20,7 +20,7 @@ const delay = ms => {
 
 const declOfNum = (n, textForms) => {
 	n = Math.abs(n) % 100
-	let n1 = n % 10
+	const n1 = n % 10
 
 	if (n > 10 && n < 20) {
 		return textForms[2]
@@ -38,7 +38,7 @@ const declOfNum = (n, textForms) => {
 }
 
 module.exports = {
-	generateUsername,
+	generateName,
 	delay,
 	declOfNum
 }
