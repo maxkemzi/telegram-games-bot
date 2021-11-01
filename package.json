@@ -7,16 +7,16 @@
     "dev": "nodemon index.js",
     "start": "node index.js"
   },
-  "author": "",
+  "author": "kemziCode <kemzi9585@gmail.com>",
   "license": "ISC",
   "dependencies": {
     "mongoose": "^6.0.5",
     "node-fetch": "^3.0.0",
-    "node-telegram-bot-api": "^0.54.0",
-    "nodemon": "^2.0.12"
+    "node-telegram-bot-api": "^0.54.0"
   },
   "devDependencies": {
     "eslint": "^7.32.0",
-    "eslint-config-google": "^0.14.0"
+    "eslint-config-google": "^0.14.0",
+    "nodemon": "^2.0.13"
   }
 }

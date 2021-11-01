@@ -1,5 +1,5 @@
-const token = '<bot_token>'
-const mongoURI = '<mongodb_uri>'
+const token = 'token'
+const mongoURI = 'mongo uri'
 
 module.exports = {
 	mongoURI,
