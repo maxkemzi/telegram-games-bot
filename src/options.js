@@ -13,41 +13,33 @@ module.exports = {
 
 	slotMachineOptions: {
 		reply_markup: JSON.stringify({
-			inline_keyboard: [
-				[{text: 'Крутить ещё раз', callback_data: 'slotAgain'}]
-			]
+			inline_keyboard: [[{text: 'Try again', callback_data: 'slotAgain'}]]
 		})
 	},
 
 	basketOptions: {
 		reply_markup: JSON.stringify({
-			inline_keyboard: [
-				[{text: 'Бросить ещё раз', callback_data: 'basketAgain'}]
-			]
+			inline_keyboard: [[{text: 'Try again', callback_data: 'basketAgain'}]]
 		})
 	},
 
 	bowlingOptions: {
 		reply_markup: JSON.stringify({
-			inline_keyboard: [
-				[{text: 'Бросить ещё раз', callback_data: 'bowlingAgain'}]
-			]
+			inline_keyboard: [[{text: 'Try again', callback_data: 'bowlingAgain'}]]
 		})
 	},
 
 	footballOptions: {
 		reply_markup: JSON.stringify({
 			inline_keyboard: [
-				[{text: 'Ударить ещё раз', callback_data: 'footballAgain'}]
+				[{text: 'Try again', callback_data: 'footballAgain'}]
 			]
 		})
 	},
 
 	dartsOptions: {
 		reply_markup: JSON.stringify({
-			inline_keyboard: [
-				[{text: 'Метнуть ещё раз', callback_data: 'dartsAgain'}]
-			]
+			inline_keyboard: [[{text: 'Try again', callback_data: 'dartsAgain'}]]
 		})
 	}
 };

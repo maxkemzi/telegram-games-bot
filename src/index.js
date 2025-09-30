@@ -48,7 +48,7 @@ const getBonus = async (telegramId, chatId, options = {}) => {
 
 		await bot.sendMessage(
 			chatId,
-			`Вы получили ${options.coinsNumber} ${declOfNum(options.coinsNumber, ['монета', 'монеты', 'монет'])} 🎉`
+			`You've received ${options.coinsNumber} ${declOfNum(options.coinsNumber, ['coin', 'coins'])} 🎉`
 		);
 	} else {
 		const minutes = Math.floor(
@@ -61,7 +61,7 @@ const getBonus = async (telegramId, chatId, options = {}) => {
 
 		await bot.sendMessage(
 			chatId,
-			`Получить монеты вы сможете через ${hours > 0 ? hours + ' ' + declOfNum(hours, ['час', 'часа', 'часов']) + ' ' : ''}${minutes !== 60 ? minutes + ' ' + declOfNum(minutes, ['минуту', 'минуты', 'минут']) + ' ' : ''}😉`
+			`You'll be able to recieve your coins in ${hours > 0 ? hours + ' ' + declOfNum(hours, ['hour', 'hours']) + ' ' : ''}${minutes !== 60 ? minutes + ' ' + declOfNum(minutes, ['minute', 'minutes']) + ' ' : ''}😉`
 		);
 	}
 };
@@ -109,7 +109,7 @@ const sendRanking = async (chatId, limit) => {
 
 	for (let i = 0; i < users.length && i < limit; i++) {
 		result.push(
-			`${users[i].ranking} место: ${users[i].name}\nПобед: ${users[i].victories}, Игр: ${users[i].games}`
+			`${users[i].ranking} place: ${users[i].name}\nVictories: ${users[i].victories}, Games: ${users[i].games}`
 		);
 	}
 
@@ -147,7 +147,7 @@ const sendDice = async (
 
 				await bot.sendMessage(
 					chatId,
-					`Имя: ${updatedUser.name}; Баланс: ${updatedUser.coins} ${declOfNum(updatedUser.coins, ['монета', 'монеты', 'монет'])} (+${options.victoryCoins})`,
+					`Name: ${updatedUser.name}; Balance: ${updatedUser.coins} ${declOfNum(updatedUser.coins, ['coin', 'coins'])} (+${options.victoryCoins})`,
 					options.buttonOptions
 				);
 			} else if (secondCondition(data.dice.value)) {
@@ -159,7 +159,7 @@ const sendDice = async (
 
 				await bot.sendMessage(
 					chatId,
-					`Имя: ${updatedUser.name}; Баланс: ${updatedUser.coins} ${declOfNum(updatedUser.coins, ['монета', 'монеты', 'монет'])} (+${options.partialVictoryCoins})`,
+					`Name: ${updatedUser.name}; Balance: ${updatedUser.coins} ${declOfNum(updatedUser.coins, ['coin', 'coins'])} (+${options.partialVictoryCoins})`,
 					options.buttonOptions
 				);
 			} else {
@@ -171,7 +171,7 @@ const sendDice = async (
 
 				await bot.sendMessage(
 					chatId,
-					`Имя: ${updatedUser.name}; Баланс: ${updatedUser.coins} ${declOfNum(updatedUser.coins, ['монета', 'монеты', 'монет'])} (-1)`,
+					`Name: ${updatedUser.name}; Balance: ${updatedUser.coins} ${declOfNum(updatedUser.coins, ['coin', 'coins'])} (-1)`,
 					options.buttonOptions
 				);
 			}
@@ -182,7 +182,7 @@ const sendDice = async (
 			// updating user's status
 			await User.updateOne({telegramId}, {$set: {status: false}});
 		} else {
-			await bot.sendMessage(chatId, `У вас закончились монеты 😒`);
+			await bot.sendMessage(chatId, `You've run out of coins. 😒`);
 		}
 	}
 };
@@ -207,12 +207,12 @@ const start = async () => {
 
 	// setting bot commands
 	await bot.setMyCommands([
-		{command: '/start', description: 'Приветствие'},
-		{command: '/games', description: 'Список игр'},
-		{command: '/commands', description: 'Список команд'},
-		{command: '/bonus', description: 'Получить бонус'},
-		{command: '/stats', description: 'Ваша статистика'},
-		{command: '/ranking', description: 'Рейтинг игроков'}
+		{command: '/start', description: 'Greeting'},
+		{command: '/games', description: 'List of games'},
+		{command: '/commands', description: 'List of commands'},
+		{command: '/bonus', description: 'Receive a bonus'},
+		{command: '/stats', description: 'Your statistics'},
+		{command: '/ranking', description: 'Ranking of players'}
 	]);
 
 	// bot on message
@@ -236,19 +236,19 @@ const start = async () => {
 			if (text === '/start' || text === `/start@${botInfo.username}`) {
 				return bot.sendMessage(
 					chatId,
-					`Добро пожаловать, ${user.name} 👋. Играй в игры и выигрывай!\n\nЧтобы увидеть список игр напиши /games\nЧтобы узнать больше команд напиши /commands`
+					`Welcome, ${user.name} 👋. Play games and win!\n\nTo see the list of games, write /games\nTo learn more commands, write /commands`
 				);
 			}
 
 			if (text === '/commands' || text === `/commands@${botInfo.username}`) {
 				return bot.sendMessage(
 					chatId,
-					'/start - приветствие\n\n/games - список игр\n\n/bonus - получить бонус\n\n/stats - ваша статистика\n\n/ranking - рейтинг игроков'
+					'/start - greeting\n\n/games - list of games\n\n/bonus - receive a bonus\n\n/stats - your statistics\n\n/ranking - ranking of players'
 				);
 			}
 
 			if (text === '/games' || text === `/games@${botInfo.username}`) {
-				return bot.sendMessage(chatId, 'Выберите игру:', gamesOptions);
+				return bot.sendMessage(chatId, 'Select a game:', gamesOptions);
 			}
 
 			if (text === '/bonus' || text === `/bonus@${botInfo.username}`) {
@@ -271,12 +271,12 @@ const start = async () => {
 
 				return bot.sendMessage(
 					chatId,
-					`Имя: ${user.name}\nПобед: ${user.victories}\nИгр: ${user.games}\nМонет: ${user.coins}\nМесто в рейтинге: ${user.ranking}`
+					`Name: ${user.name}\nVictories: ${user.victories}\nGames: ${user.games}\nCoins: ${user.coins}\nRanking: ${user.ranking}`
 				);
 			}
 		} catch (e) {
 			console.log(e);
-			return bot.sendMessage(chatId, 'Произошла ошибка :(');
+			return bot.sendMessage(chatId, 'Something went wrong :(');
 		}
 	});
 
@@ -386,7 +386,7 @@ const start = async () => {
 			}
 		} catch (e) {
 			console.log(e);
-			return bot.sendMessage(chatId, 'Произошла ошибка :(');
+			return bot.sendMessage(chatId, 'Something went wrong :(');
 		}
 	});
 };
